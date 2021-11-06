@@ -22,13 +22,22 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     setState(() {
       _isLoadingMoreData = true;
     });
-    EmployeeController().fetchData(start: _employeeData.length,end: _employeeData.length + 50).then((value){
-      setState(() {
-        _employeeData = [..._employeeData, ...value];
-        _isLoadingMoreData = false;
-      });
+    if(_employeeData.length < EmployeeController().totalNumberOfEmployees)//
+    {
+      EmployeeController().fetchData(start: _employeeData.length,end: _employeeData.length + 50).then((value){
+        setState(() {
+          _employeeData = [..._employeeData, ...value];
+          _isLoadingMoreData = false;
+        });
 
-    });
+      });
+    }else{
+      setState(() {
+        _isLoadingMoreData = false;
+        _allEmployeesDataFetched = true;
+      });
+    }
+
   }
 
   @override
