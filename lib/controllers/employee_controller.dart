@@ -3,17 +3,22 @@ import 'dart:convert';
 import 'package:employee/models/employee_model.dart';
 import 'package:flutter/services.dart';
 
+int _totalNumberOfEmployees = 0 ;
 class EmployeeController {
+
  Future <List<Employee>> fetchData({int start = 0, int end = 50}) async {
     try {
       String data = await rootBundle.loadString('assets/data/employees.json');
+
       List result = jsonDecode(data);
+      _totalNumberOfEmployees = result.length;
 
       List<Employee> employeeData =
           employeeList(result.getRange(start, end).toList()); //
 
       return employeeData;
     } catch (error) {
+      print('This is the error ${error}');
       return [];
     }
   }
@@ -25,4 +30,6 @@ class EmployeeController {
     }
     return _employees;
   }
+
+  int get totalNumberOfEmployees => _totalNumberOfEmployees;
 }

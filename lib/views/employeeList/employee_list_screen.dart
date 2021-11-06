@@ -15,14 +15,32 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Employee> _employeeData = [];
   final _scrollController = ScrollController();
   bool _isLoading = true;
+  bool _allEmployeesDataFetched = false;
+
+  void fetchMoreData(){
+    EmployeeController().fetchData(start: _employeeData.length,end: _employeeData.length + 50).then((value){
+      setState(() {
+        _employeeData = [..._employeeData, ...value];
+      });
+
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     EmployeeController().fetchData().then((result){
+
       setState(() {
         _employeeData = result;
         _isLoading = false;
       });
+    });
+
+    _scrollController.addListener(() {
+      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent){
+        fetchMoreData();
+      }
     });
     super.initState();
   }
