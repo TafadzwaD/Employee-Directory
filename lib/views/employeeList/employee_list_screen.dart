@@ -1,3 +1,4 @@
+import 'package:employee/views/employeeList/dashed_line_widget.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeListScreen extends StatefulWidget {
@@ -61,15 +62,20 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                     )),
               ),
             ),
-            ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index){
-                return Text('Hello $index');
-              },
-              separatorBuilder:(context,index){
-                return const Divider(thickness: 1);
-              },
-              itemCount: 3,
+            Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context, index){
+                  return Text('Hello $index');
+                },
+                separatorBuilder:(context,index){
+                  return const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: DashedLine(),
+                  );
+                },
+                itemCount: 100,
+              ),
             )
           ],
         ),
