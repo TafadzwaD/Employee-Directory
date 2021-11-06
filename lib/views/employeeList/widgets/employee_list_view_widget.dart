@@ -1,8 +1,10 @@
+import 'package:employee/models/employee_model.dart';
 import 'package:flutter/material.dart';
 
 
 class EmployeeListViewWidget extends StatelessWidget {
-  const EmployeeListViewWidget({Key? key}) : super(key: key);
+  final Employee employeeData;
+  const EmployeeListViewWidget({Key? key, required this.employeeData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
