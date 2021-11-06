@@ -43,15 +43,16 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       ),
       body: Container(
         child: Column(
-          children: const <Widget>[
-            Padding(
+          children: <Widget>[
+            const Padding(
               padding: EdgeInsets.all(18.0),
               child: TextField(
                 autofocus: false,
                 decoration: InputDecoration(
                     hintText: 'Search Employee',
                     hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
-                    isDense: true, // use less vertical space..
+                    isDense: true,
+                    // use less vertical space..
                     suffixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
@@ -59,6 +60,16 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                       ),
                     )),
               ),
+            ),
+            ListView.separated(
+              shrinkWrap: true,
+              itemBuilder: (context, index){
+                return Text('Hello $index');
+              },
+              separatorBuilder:(context,index){
+                return const Divider(thickness: 1);
+              },
+              itemCount: 3,
             )
           ],
         ),
