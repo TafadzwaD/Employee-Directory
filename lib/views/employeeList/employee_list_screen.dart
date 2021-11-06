@@ -13,6 +13,7 @@ class EmployeeListScreen extends StatefulWidget {
 
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Employee> _employeeData = [];
+  final _scrollController = ScrollController();
   bool _isLoading = true;
   @override
   void initState() {
@@ -79,9 +80,10 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
           ),
           Expanded(
             child: ListView.separated(
+              controller: _scrollController,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return const EmployeeListViewWidget();
+                return EmployeeListViewWidget(employeeData: _employeeData[index],);
               },
               separatorBuilder: (context, index) {
                 return const Padding(

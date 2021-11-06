@@ -24,11 +24,11 @@ class EmployeeListViewWidget extends StatelessWidget {
             child: Container(
               width: 60,
               height: 60,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                     image: NetworkImage(
-                        'https://hub.dummyapis.com/Image?text=KA&height=120&width=120'),
+                        employeeData.imageUrl),
                     fit: BoxFit.cover),
               ),
             ),
@@ -37,10 +37,10 @@ class EmployeeListViewWidget extends StatelessWidget {
         const SizedBox(width: 4 ,),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start, //Positions children near the start of the cross axis (horizontal)
-          children: const <Widget>[
-            Text('FirstName + LastName',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black45,fontSize: 15, ),),
-            SizedBox(height: 5,),
-            Text('Job Role',style: TextStyle(color: Colors.black45,fontSize: 12),),
+          children: <Widget>[
+            Text(employeeData.firstName + ' ' + employeeData.lastName,style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black45,fontSize: 15, ),),
+            const SizedBox(height: 5,),
+            const Text('Job Role',style: TextStyle(color: Colors.black45,fontSize: 12),),
           ],
         )
       ],
