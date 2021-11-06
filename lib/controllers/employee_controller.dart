@@ -11,6 +11,8 @@ class EmployeeController {
       String data = await rootBundle.loadString('assets/data/employees.json');
 
       List result = jsonDecode(data);
+      result.sort((a, b) {
+        return a['firstName'].toLowerCase().compareTo(b['firstName'].toLowerCase());});
       _totalNumberOfEmployees = result.length;
 
       List<Employee> employeeData =
