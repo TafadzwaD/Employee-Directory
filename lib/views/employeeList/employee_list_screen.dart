@@ -15,12 +15,17 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Employee> _employeeData = [];
   final _scrollController = ScrollController();
   bool _isLoading = true;
+  bool _isLoadingMoreData = false;
   bool _allEmployeesDataFetched = false;
 
   void fetchMoreData(){
+    setState(() {
+      _isLoadingMoreData = true;
+    });
     EmployeeController().fetchData(start: _employeeData.length,end: _employeeData.length + 50).then((value){
       setState(() {
         _employeeData = [..._employeeData, ...value];
+        _isLoadingMoreData = false;
       });
 
     });
@@ -103,19 +108,28 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              controller: _scrollController,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return EmployeeListViewWidget(employeeData: _employeeData[index],);
-              },
-              separatorBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.fromLTRB(80, 2, 30,10),
-                  child: DashedLine(),
-                );
-              },
-              itemCount: _employeeData.length,
+            child: Stack(
+              children:[
+                ListView.separated(
+                  controller: _scrollController,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return EmployeeListViewWidget(employeeData: _employeeData[index],);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.fromLTRB(80, 2, 30,10),
+                      child: DashedLine(),
+                    );
+                  },
+                  itemCount: _employeeData.length,
+                ),
+               _isLoadingMoreData ? const Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CircularProgressIndicator(),
+                ): Container(),
+
+              ] ,
             ),
           )
         ],
