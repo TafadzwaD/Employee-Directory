@@ -13,15 +13,15 @@ class EmployeeListViewWidget extends StatelessWidget {
             horizontal: 8.0,
           ),
           child: Container(
-            width: 75,
-            height: 75,
+            width: 62,
+            height: 62,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(width: 0.1, color: Colors.black54),
             ),
             child: Container(
-              width: 73,
-              height: 73,
+              width: 60,
+              height: 60,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -32,7 +32,7 @@ class EmployeeListViewWidget extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 2 ,),
+        const SizedBox(width: 4 ,),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start, //Positions children near the start of the cross axis (horizontal)
           children: const <Widget>[
