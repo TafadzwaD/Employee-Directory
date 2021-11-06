@@ -70,7 +70,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
               },
               separatorBuilder: (context, index) {
                 return const Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: EdgeInsets.fromLTRB(80, 2, 30,10),
                   child: DashedLine(),
                 );
               },
