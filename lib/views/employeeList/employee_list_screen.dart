@@ -1,4 +1,5 @@
 import 'package:employee/controllers/employee_controller.dart';
+import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:employee/views/employeeList/widgets/employee_list_view_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,16 @@ class EmployeeListScreen extends StatefulWidget {
 }
 
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
+  List<Employee> _employeeData = [];
+  bool _isLoading = true;
   @override
   void initState() {
     // TODO: implement initState
     EmployeeController().fetchData().then((result){
-      print(result);
+      setState(() {
+        _employeeData = result;
+        _isLoading = false;
+      });
     });
     super.initState();
   }
@@ -52,7 +58,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
             ),
             preferredSize: const Size.fromHeight(2.0)),
       ),
-      body: Column(
+      body:!_isLoading ? Column(
         children: <Widget>[
           const Padding(
             padding: EdgeInsets.all(18.0),
@@ -83,11 +89,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   child: DashedLine(),
                 );
               },
-              itemCount: 100,
+              itemCount: _employeeData.length,
             ),
           )
         ],
-      ),
+      ): const Center(child: CircularProgressIndicator()),
     );
   }
 }

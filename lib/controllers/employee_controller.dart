@@ -4,13 +4,13 @@ import 'package:employee/models/employee_model.dart';
 import 'package:flutter/services.dart';
 
 class EmployeeController {
-  fetchData({int start = 0, int end = 50}) async {
+ Future <List<Employee>> fetchData({int start = 0, int end = 50}) async {
     try {
       String data = await rootBundle.loadString('assets/data/employees.json');
       List result = jsonDecode(data);
 
       List<Employee> employeeData =
-          employeeList(result.getRange(0, 2).toList());
+          employeeList(result.getRange(start, end).toList()); //
 
       return employeeData;
     } catch (error) {
