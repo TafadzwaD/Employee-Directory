@@ -22,4 +22,17 @@ class Employee {
     required this.salary,
     required this.address,
   });
+
+  Employee.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        imageUrl = json['imageUrl'],
+        firstName = json['firstName'],
+        lastName = json['lastName'],
+        email = json['email'],
+        contactNumber = json['contactNumber'],
+        age = json['age'],
+        dob = json['dob'],
+        salary = json['salary'],
+        address = json['address'];
+
 }

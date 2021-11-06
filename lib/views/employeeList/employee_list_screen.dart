@@ -1,3 +1,4 @@
+import 'package:employee/controllers/employee_controller.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:employee/views/employeeList/widgets/employee_list_view_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,14 @@ class EmployeeListScreen extends StatefulWidget {
 }
 
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    EmployeeController().fetchData().then((result){
+      print(result);
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
