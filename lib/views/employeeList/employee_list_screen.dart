@@ -28,7 +28,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         ),
         title: const Text(
           'Employee Directory',
-          style: TextStyle(fontSize: 15, color: Colors.black54,fontWeight: FontWeight.bold,height: 2),
+          style: TextStyle(
+              fontSize: 15,
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              height: 2),
         ),
         bottom: PreferredSize(
             child: Container(
@@ -36,6 +40,25 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
               height: 1,
             ),
             preferredSize: const Size.fromHeight(2.0)),
+      ),
+      body: Container(
+        child: Column(
+          children: const <Widget>[
+            TextField(
+              autofocus: false,
+              decoration: InputDecoration(
+                  hintText: 'Search Employee',
+                  hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
+                  isDense: true, // use less vertical space..
+                  suffixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
