@@ -14,6 +14,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {},
@@ -29,6 +30,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
           'Employee Directory',
           style: TextStyle(fontSize: 15, color: Colors.black54,fontWeight: FontWeight.bold,height: 2),
         ),
+        bottom: PreferredSize(
+            child: Container(
+              color: Colors.grey.shade200,
+              height: 1,
+            ),
+            preferredSize: const Size.fromHeight(2.0)),
       ),
     );
   }
