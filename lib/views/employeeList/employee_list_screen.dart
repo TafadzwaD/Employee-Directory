@@ -44,18 +44,21 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       body: Container(
         child: Column(
           children: const <Widget>[
-            TextField(
-              autofocus: false,
-              decoration: InputDecoration(
-                  hintText: 'Search Employee',
-                  hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
-                  isDense: true, // use less vertical space..
-                  suffixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  )),
+            Padding(
+              padding: EdgeInsets.all(18.0),
+              child: TextField(
+                autofocus: false,
+                decoration: InputDecoration(
+                    hintText: 'Search Employee',
+                    hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
+                    isDense: true, // use less vertical space..
+                    suffixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    )),
+              ),
             )
           ],
         ),
