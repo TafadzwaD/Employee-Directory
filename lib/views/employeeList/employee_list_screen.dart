@@ -13,14 +13,22 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {},
-          icon: const Icon(
-            Icons.menu,
+          icon: Transform.scale(
+            scale: 1.2,
+            child: const Icon(
+              Icons.menu,
+              color: Colors.black54,
+            ),
           ),
         ),
-        title: const Text('Employee Directory',style: TextStyle(fontSize: 12),),
+        title: const Text(
+          'Employee Directory',
+          style: TextStyle(fontSize: 15, color: Colors.black54,fontWeight: FontWeight.bold,height: 2),
+        ),
       ),
     );
   }
