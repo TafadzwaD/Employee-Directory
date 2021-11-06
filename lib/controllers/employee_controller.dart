@@ -18,7 +18,6 @@ class EmployeeController {
 
       return employeeData;
     } catch (error) {
-      print('This is the error ${error}');
       return [];
     }
   }

@@ -123,7 +123,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   controller: _scrollController,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return EmployeeListViewWidget(employeeData: _employeeData[index],);
+                    if(index< _employeeData.length){
+                      return EmployeeListViewWidget(employeeData: _employeeData[index],);
+                    }else{
+                      return const Center(child: Text('All Data Has Been Fetched',style: TextStyle(color: Colors.black45,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),);
+                    }
                   },
                   separatorBuilder: (context, index) {
                     return const Padding(
@@ -131,7 +135,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                       child: DashedLine(),
                     );
                   },
-                  itemCount: _employeeData.length,
+                  itemCount: _employeeData.length + (_allEmployeesDataFetched ? 1 : 0),
                 ),
                _isLoadingMoreData ? const Align(
                   alignment: Alignment.bottomCenter,
