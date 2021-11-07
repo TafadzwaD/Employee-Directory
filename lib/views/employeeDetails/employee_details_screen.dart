@@ -42,24 +42,27 @@ class EmployeeDetailsScreen extends StatelessWidget {
         ],
       ),
       body: ListView(
-        children:[
-          const SizedBox(height: 100,),
+        children: [
+          const SizedBox(
+            height: 100,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
             child: Stack(
               clipBehavior: Clip.none,
               alignment: Alignment.topCenter,
               children: [
-
                 Positioned(
-                  top: -60,
-                  child: EmployeeAvatar(imageUrl: details.imageUrl,)
-                ),
+                    top: -60,
+                    child: EmployeeAvatar(
+                      imageUrl: details.imageUrl,
+                    )),
                 SizedBox(
                   height: 200,
                   child: Stack(
-                    children: const [
-                      Align(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      const Align(
                         alignment: Alignment.topLeft,
                         child: SizedBox(
                           height: 200,
@@ -69,7 +72,48 @@ class EmployeeDetailsScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Align(
+                      Positioned(
+                        top: 80,
+                        child: Column(
+                          children: [
+                            Text(
+                              (details.firstName + '' + ' ' + details.lastName),
+                              style: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black54),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              'Flutter Developer @Emporium',
+                              style: TextStyle(
+                                  fontSize: 17, color: Colors.black54),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 5,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: const BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.rectangle,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+
+                              ),
+                              child: const Center(child: Icon(Icons.phone),),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Align(
                         alignment: Alignment.topRight,
                         child: SizedBox(
                           height: 200,
@@ -79,11 +123,11 @@ class EmployeeDetailsScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.bottomLeft,
                         child: DashedLine(),
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.topRight,
                         child: DashedLine(),
                       ),
@@ -109,7 +153,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
               ],
             ),
           )
-        ] ,
+        ],
       ),
     );
   }
