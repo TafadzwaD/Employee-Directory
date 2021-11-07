@@ -1,4 +1,5 @@
 import 'package:employee/models/employee_model.dart';
+import 'package:employee/views/employeeDetails/widgets/employee_avatar_widget.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -40,63 +41,75 @@ class EmployeeDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 15.0,right: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 200,
-              child: Stack(
-                children: const [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: SizedBox(
-                      height: 200,
-                      child: RotatedBox(
-                        quarterTurns: 1,
-                        child: DashedLine(),),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: SizedBox(
-                      height: 200,
-                      child: RotatedBox(
-                        quarterTurns: 1,
-                        child: DashedLine(),),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: DashedLine(),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: DashedLine(),
-                  ),
+      body: ListView(
+        children:[
+          const SizedBox(height: 100,),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15),
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
 
-                ],
-              ),
+                Positioned(
+                  top: -60,
+                  child: EmployeeAvatar(imageUrl: details.imageUrl,)
+                ),
+                SizedBox(
+                  height: 200,
+                  child: Stack(
+                    children: const [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                          height: 200,
+                          child: RotatedBox(
+                            quarterTurns: 1,
+                            child: DashedLine(),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: SizedBox(
+                          height: 200,
+                          child: RotatedBox(
+                            quarterTurns: 1,
+                            child: DashedLine(),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: DashedLine(),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: DashedLine(),
+                      ),
+                    ],
+                  ),
+                ),
+                // Container(
+                //   width: double.infinity,
+                // height: 500,
+                // child: Column(
+                //   children: [
+                //     Container(
+                //       height: 300,
+                //       child: RotatedBox(
+                //         quarterTurns: 1,
+                //         child: DashedLine(),),
+                //     ),
+                //     SizedBox(height: 20,),
+                //     DashedLine(),
+                //
+                //   ],
+                // )),
+              ],
             ),
-            // Container(
-            //   width: double.infinity,
-            // height: 500,
-            // child: Column(
-            //   children: [
-            //     Container(
-            //       height: 300,
-            //       child: RotatedBox(
-            //         quarterTurns: 1,
-            //         child: DashedLine(),),
-            //     ),
-            //     SizedBox(height: 20,),
-            //     DashedLine(),
-            //
-            //   ],
-            // )),
-          ],
-        ),
+          )
+        ] ,
       ),
     );
   }
