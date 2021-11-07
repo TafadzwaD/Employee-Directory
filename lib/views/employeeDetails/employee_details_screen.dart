@@ -102,12 +102,12 @@ class EmployeeDetailsScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Container(
-                                width: 50,
-                                height: 50,
+                                width: 45,
+                                height: 45,
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(17)),
                                     gradient: LinearGradient(
                                       begin: Alignment.topRight,
                                       end: Alignment.bottomLeft,
@@ -127,12 +127,12 @@ class EmployeeDetailsScreen extends StatelessWidget {
                               const Vdivider(),
 
                               Container(
-                                width: 50,
-                                height: 50,
+                                width: 45,
+                                height: 45,
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(17)),
                                     gradient: LinearGradient(
                                       begin: Alignment.centerRight,
                                       end: Alignment.bottomLeft,
@@ -150,12 +150,12 @@ class EmployeeDetailsScreen extends StatelessWidget {
                               ),
                               const Vdivider(),
                               Container(
-                                width: 50,
-                                height: 50,
+                                width: 45,
+                                height: 45,
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(17)),
                                     gradient: LinearGradient(
                                       begin: Alignment.centerLeft,
                                       end: Alignment.topRight,
