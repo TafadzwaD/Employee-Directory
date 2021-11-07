@@ -106,7 +106,14 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                 shape: BoxShape.rectangle,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
-
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Colors.teal,
+                                      Colors.yellow,
+                                    ],
+                                  )
                               ),
                               child: const Center(child: Icon(Icons.phone),),
                             ),
