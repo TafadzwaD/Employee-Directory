@@ -3,6 +3,7 @@ import 'package:employee/views/employeeDetails/widgets/employee_avatar_widget.da
 import 'package:employee/views/employeeDetails/widgets/icon_widget.dart';
 import 'package:employee/views/employeeDetails/widgets/vdivider_widget.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeDetailsScreen extends StatelessWidget {
@@ -159,6 +160,126 @@ class EmployeeDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+              ],
+            ),
+          ),
+          const Padding(padding: EdgeInsets.all(15),
+            child: Text('Basic Information',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15,right: 15),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+
+                Stack(
+                  children:[
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                        height: 40,
+                        child: RotatedBox(
+                          quarterTurns: 1,
+                          child: DashedLine(),
+                        ),
+                      ),
+                    ),
+                    const Align(
+                      alignment: Alignment.topRight,
+                      child: SizedBox(
+                        height: 40,
+                        child: RotatedBox(
+                          quarterTurns: 1,
+                          child: DashedLine(),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 17.5),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: SizedBox(
+                          height: 40,
+                          child: DashedLine(),
+                        ),
+                      ),
+                    ),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child:  SizedBox(
+                        child: DashedLine(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0,top: 10,right: 8),
+                      child: Row(
+                        children: const [
+                          Text('Designation',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black54
+                          ),),
+                          Spacer(),
+                          Text('Designer',style: TextStyle(fontWeight: FontWeight.w400,color: Colors.black54
+                          ),),
+                        ],
+                      ),
+                    ),
+
+                  ]
+                ),
+                Stack(
+                    children:[
+                      const Align(
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                          height: 40,
+                          child: RotatedBox(
+                            quarterTurns: 1,
+                            child: DashedLine(),
+                          ),
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.topRight,
+                        child: SizedBox(
+                          height: 40,
+                          child: RotatedBox(
+                            quarterTurns: 1,
+                            child: DashedLine(),
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 17.5),
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: SizedBox(
+                            height: 40,
+                            child: DashedLine(),
+                          ),
+                        ),
+                      ),
+                      const Align(
+                        alignment: Alignment.topLeft,
+                        child:  SizedBox(
+                          child: DashedLine(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0,top: 10,right: 8),
+                        child: Row(
+                          children: const [
+                            Text('Designation',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black54
+                            ),),
+                            Spacer(),
+                            Text('Designer',style: TextStyle(fontWeight: FontWeight.w400,color: Colors.black54
+                            ),),
+                          ],
+                        ),
+                      ),
+
+                    ]
+                ),
+
+
               ],
             ),
           )
