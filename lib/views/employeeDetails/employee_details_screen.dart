@@ -1,5 +1,6 @@
 import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeDetails/widgets/employee_avatar_widget.dart';
+import 'package:employee/views/employeeDetails/widgets/vdivider_widget.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -99,41 +100,14 @@ class EmployeeDetailsScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
-
                             children: [
                               Container(
                                 width: 50,
                                 height: 50,
                                 decoration: const BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
-                                      colors: [
-                                        Colors.teal,
-                                        Colors.yellow,
-                                      ],
-                                    )
-                                ),
-                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
-                              ),
-                              // const VerticalDivider(width: 30,),
-                          Container(
-                            height: 40.0,
-                            width: 0.8,
-                            color: Colors.grey.shade400,
-                            margin: const EdgeInsets.only(left: 15.0, right: 15.0),),
-
-
-                            Container(
-                                width: 50,
-                                height: 50,
-                                decoration: const BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(20)),
                                     gradient: LinearGradient(
                                       begin: Alignment.topRight,
                                       end: Alignment.bottomLeft,
@@ -141,17 +115,24 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                         Colors.teal,
                                         Colors.yellow,
                                       ],
-                                    )
+                                    )),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.phone,
+                                    color: Colors.black38,
+                                  ),
                                 ),
-                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
                               ),
+                              // const VerticalDivider(width: 30,),
+                              const Vdivider(),
+
                               Container(
                                 width: 50,
                                 height: 50,
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(20)),
                                     gradient: LinearGradient(
                                       begin: Alignment.topRight,
                                       end: Alignment.bottomLeft,
@@ -159,9 +140,36 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                         Colors.teal,
                                         Colors.yellow,
                                       ],
-                                    )
+                                    )),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.phone,
+                                    color: Colors.black38,
+                                  ),
                                 ),
-                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
+                              ),
+                              const Vdivider(),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.teal,
+                                        Colors.yellow,
+                                      ],
+                                    )),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.phone,
+                                    color: Colors.black38,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
