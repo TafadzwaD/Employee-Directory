@@ -1,5 +1,6 @@
 import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeDetails/widgets/employee_avatar_widget.dart';
+import 'package:employee/views/employeeDetails/widgets/employee_basic_info_field_widget.dart';
 import 'package:employee/views/employeeDetails/widgets/icon_widget.dart';
 import 'package:employee/views/employeeDetails/widgets/vdivider_widget.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
@@ -171,113 +172,14 @@ class EmployeeDetailsScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                EmployeeInformationField( fieldTitle: 'Salary',fieldValue: details.salary.toString()),
+                EmployeeInformationField( fieldTitle: 'D.O.B',fieldValue: details.dob),
+                EmployeeInformationField( fieldTitle: 'Address',fieldValue: details.address),
+                EmployeeInformationField( fieldTitle: 'Contact Number',fieldValue: details.contactNumber),
 
-                Stack(
-                  children:[
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: SizedBox(
-                        height: 40,
-                        child: RotatedBox(
-                          quarterTurns: 1,
-                          child: DashedLine(),
-                        ),
-                      ),
-                    ),
-                    const Align(
-                      alignment: Alignment.topRight,
-                      child: SizedBox(
-                        height: 40,
-                        child: RotatedBox(
-                          quarterTurns: 1,
-                          child: DashedLine(),
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 17.5),
-                      child: Align(
-                        alignment: Alignment.bottomLeft,
-                        child: SizedBox(
-                          height: 40,
-                          child: DashedLine(),
-                        ),
-                      ),
-                    ),
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child:  SizedBox(
-                        child: DashedLine(),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0,top: 10,right: 8),
-                      child: Row(
-                        children: const [
-                          Text('Designation',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black54
-                          ),),
-                          Spacer(),
-                          Text('Designer',style: TextStyle(fontWeight: FontWeight.w400,color: Colors.black54
-                          ),),
-                        ],
-                      ),
-                    ),
 
-                  ]
-                ),
-                Stack(
-                    children:[
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child: SizedBox(
-                          height: 40,
-                          child: RotatedBox(
-                            quarterTurns: 1,
-                            child: DashedLine(),
-                          ),
-                        ),
-                      ),
-                      const Align(
-                        alignment: Alignment.topRight,
-                        child: SizedBox(
-                          height: 40,
-                          child: RotatedBox(
-                            quarterTurns: 1,
-                            child: DashedLine(),
-                          ),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 17.5),
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: SizedBox(
-                            height: 40,
-                            child: DashedLine(),
-                          ),
-                        ),
-                      ),
-                      const Align(
-                        alignment: Alignment.topLeft,
-                        child:  SizedBox(
-                          child: DashedLine(),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0,top: 10,right: 8),
-                        child: Row(
-                          children: const [
-                            Text('Designation',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.black54
-                            ),),
-                            Spacer(),
-                            Text('Designer',style: TextStyle(fontWeight: FontWeight.w400,color: Colors.black54
-                            ),),
-                          ],
-                        ),
-                      ),
 
-                    ]
-                ),
+
 
 
               ],
