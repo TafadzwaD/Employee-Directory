@@ -96,28 +96,75 @@ class EmployeeDetailsScreen extends StatelessWidget {
                       ),
                       Positioned(
                         bottom: 5,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              decoration: const BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.rectangle,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topRight,
-                                    end: Alignment.bottomLeft,
-                                    colors: [
-                                      Colors.teal,
-                                      Colors.yellow,
-                                    ],
-                                  )
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+
+                            children: [
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.teal,
+                                        Colors.yellow,
+                                      ],
+                                    )
+                                ),
+                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
                               ),
-                              child: const Center(child: Icon(Icons.phone),),
-                            ),
-                          ],
+                              // const VerticalDivider(width: 30,),
+                          Container(
+                            height: 40.0,
+                            width: 0.8,
+                            color: Colors.grey.shade400,
+                            margin: const EdgeInsets.only(left: 15.0, right: 15.0),),
+
+
+                            Container(
+                                width: 50,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.teal,
+                                        Colors.yellow,
+                                      ],
+                                    )
+                                ),
+                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
+                              ),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.teal,
+                                        Colors.yellow,
+                                      ],
+                                    )
+                                ),
+                                child: const Center(child: Icon(Icons.phone,color: Colors.black38,),),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       const Align(
