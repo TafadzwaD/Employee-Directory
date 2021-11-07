@@ -134,7 +134,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)),
                                     gradient: LinearGradient(
-                                      begin: Alignment.topRight,
+                                      begin: Alignment.centerRight,
                                       end: Alignment.bottomLeft,
                                       colors: [
                                         Colors.teal,
@@ -143,7 +143,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                     )),
                                 child: const Center(
                                   child: Icon(
-                                    Icons.phone,
+                                    Icons.phone_android,
                                     color: Colors.black38,
                                   ),
                                 ),
@@ -157,8 +157,8 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)),
                                     gradient: LinearGradient(
-                                      begin: Alignment.topRight,
-                                      end: Alignment.bottomLeft,
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.topRight,
                                       colors: [
                                         Colors.teal,
                                         Colors.yellow,
@@ -166,7 +166,7 @@ class EmployeeDetailsScreen extends StatelessWidget {
                                     )),
                                 child: const Center(
                                   child: Icon(
-                                    Icons.phone,
+                                    Icons.email,
                                     color: Colors.black38,
                                   ),
                                 ),
@@ -196,22 +196,6 @@ class EmployeeDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Container(
-                //   width: double.infinity,
-                // height: 500,
-                // child: Column(
-                //   children: [
-                //     Container(
-                //       height: 300,
-                //       child: RotatedBox(
-                //         quarterTurns: 1,
-                //         child: DashedLine(),),
-                //     ),
-                //     SizedBox(height: 20,),
-                //     DashedLine(),
-                //
-                //   ],
-                // )),
               ],
             ),
           )
