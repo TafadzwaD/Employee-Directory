@@ -24,13 +24,13 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     });
     if(_employeeData.length < EmployeeController().totalNumberOfEmployees)//
     {
-      EmployeeController().fetchData(start: _employeeData.length,end: _employeeData.length + 50).then((value){
+      List<Employee> _newEmployeeData =  EmployeeController().employeesPaginatedList(start: _employeeData.length,end: _employeeData.length + 50);
         setState(() {
-          _employeeData = [..._employeeData, ...value];
+          _employeeData = [..._employeeData, ..._newEmployeeData];
           _isLoadingMoreData = false;
         });
 
-      });
+
     }else{
       setState(() {
         _isLoadingMoreData = false;
