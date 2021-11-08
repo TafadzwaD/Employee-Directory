@@ -48,7 +48,7 @@ class EmployeeController {
 
   //Function creates a map with each alphabet letter as key and the first employee's index as key... Employees list should supplied already sorted by firstName
   mapAlphabetLetterToFirstEmployeeFirstName({required List<Employee> employees}) {
-    var alphabetMap = {};
+    Map<String, int> alphabetMap = {};
     for (var letter in alphabet) {
       alphabetMap[letter] = employees.indexWhere(
         (element) => element.firstName.toLowerCase().startsWith(
@@ -57,7 +57,7 @@ class EmployeeController {
       );
     }
 
-    _alphabetContactMap = _alphabetContactMap;
+    _alphabetContactMap = alphabetMap;
 
 
   }

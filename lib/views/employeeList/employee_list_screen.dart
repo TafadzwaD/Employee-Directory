@@ -146,10 +146,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                  children: [
+                        children: [
+                          for(var letters in EmployeeController().alphabetContactMap.keys)
+                            Text(letters)
 
-                  ],
-                ),
+                        ],
+                      )
                     )),
               ] ,
             ),
