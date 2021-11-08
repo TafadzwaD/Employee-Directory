@@ -45,8 +45,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     // TODO: implement initState
     EmployeeController().fetchData().then((result){
 
+      fetchMoreData();
       setState(() {
-        _employeeData = result;
         _isLoading = false;
       });
     });

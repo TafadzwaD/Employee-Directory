@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 int _totalNumberOfEmployees = 0;
 List _sortedEmployeeList = [];
+Map<String, int > _alphabetContactMap = {};
 
 class EmployeeController {
    fetchData({int start = 0, int end = 50}) async {
@@ -23,7 +24,7 @@ class EmployeeController {
 
        //
 
-      // mapAlphabetLetterToFirstEmployeeFirstName(employees: employeeList(result.getRange(0, _totalNumberOfEmployees).toList()));
+      mapAlphabetLetterToFirstEmployeeFirstName(employees: employeeList(result.getRange(0, _totalNumberOfEmployees).toList()));
 
       // return employeeData;
     } catch (error) {
@@ -56,10 +57,11 @@ class EmployeeController {
       );
     }
 
-    print('Alphabet map');
-    print(alphabetMap);
+    _alphabetContactMap = _alphabetContactMap;
+
 
   }
 
   int get totalNumberOfEmployees => _totalNumberOfEmployees;
+   Map<String, int> get alphabetContactMap => _alphabetContactMap;
 }
