@@ -141,7 +141,16 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   alignment: Alignment.bottomCenter,
                   child: CircularProgressIndicator(),
                 ): Container(),
+                Positioned(
+                  right: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                  children: [
 
+                  ],
+                ),
+                    )),
               ] ,
             ),
           )
