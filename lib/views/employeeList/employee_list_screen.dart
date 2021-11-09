@@ -2,6 +2,7 @@ import 'package:employee/controllers/employee_controller.dart';
 import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:employee/views/employeeList/widgets/employee_list_view_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeListScreen extends StatefulWidget {
@@ -127,13 +128,23 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                           controller: _scrollController,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            if (index < _employeeData.length ) {
+                            if (index < _employeeData.length) {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-
-                                  EmployeeController()
-                                      .alphabetContactMap.values.contains(index)? Text(_employeeData[index].firstName.characters.first):Container(),
+                                  // check if employee is the first in their grouping in alphabetical order based on firstName. Display first character of firstname if that is the case or empty container
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15.0,top: 20),
+                                    child: EmployeeController()
+                                            .alphabetContactMap
+                                            .values
+                                            .contains(index)
+                                        ? Text(_employeeData[index]
+                                            .firstName
+                                            .characters
+                                            .first,style: const TextStyle(color: Colors.black54,fontWeight: FontWeight.w500),)
+                                        : Container(),
+                                  ),
                                   EmployeeListViewWidget(
                                     employeeData: _employeeData[index],
                                   ),
@@ -177,11 +188,15 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                                       .alphabetContactMap
                                       .keys)
                                     InkWell(
-                                      onTap:(){
-                                        print('Go to ${EmployeeController().alphabetContactMap[letter]}');
-
+                                      onTap: () {
+                                        print(
+                                            'Go to ${EmployeeController().alphabetContactMap[letter]}');
                                       },
-                                      child: Text(letter,style: const TextStyle(fontSize: 18,color: Colors.grey),),
+                                      child: Text(
+                                        letter,
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.grey),
+                                      ),
                                     ),
                                 ],
                               ))),
