@@ -127,9 +127,17 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                           controller: _scrollController,
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
-                            if (index < _employeeData.length) {
-                              return EmployeeListViewWidget(
-                                employeeData: _employeeData[index],
+                            if (index < _employeeData.length ) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+
+                                  EmployeeController()
+                                      .alphabetContactMap.values.contains(index)? Text(_employeeData[index].firstName.characters.first):Container(),
+                                  EmployeeListViewWidget(
+                                    employeeData: _employeeData[index],
+                                  ),
+                                ],
                               );
                             } else {
                               return const Center(
