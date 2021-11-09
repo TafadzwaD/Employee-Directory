@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 10),
+      const Duration(seconds: 3),
       () {
         EmployeeController().fetchData().then((result) {
           List<Employee> _employeeData = EmployeeController()
