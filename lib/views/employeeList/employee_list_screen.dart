@@ -19,7 +19,7 @@ class EmployeeListScreen extends StatefulWidget {
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Employee> _employeeData = [];
   final _scrollController = ScrollController();
-  // bool _isLoading = true;
+
   bool _isLoadingMoreData = false;
   bool _allEmployeesDataFetched = false;
 
@@ -67,18 +67,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     _employeeData = widget.initialEmployeeData;
-    // EmployeeController().fetchData().then((result) {
-    //   fetchMoreData();
-    //   setState(() {
-    //     _isLoading = false;
-    //   });
-    // });
 
     _scrollController.addListener(() {
-      print(
-          'This is the scroll position in pixels ${_scrollController.position.pixels}');
+
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent) {
         fetchMoreData();
@@ -151,7 +144,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 20),
+                        padding: const EdgeInsets.only(right: 20),
                         child: ListView.separated(
                           controller: _scrollController,
                           shrinkWrap: true,
@@ -179,7 +172,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                                           )
                                         : Container(),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: 60,
                                     child: EmployeeListViewWidget(
                                       employeeData: _employeeData[index],
@@ -224,13 +217,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
 
                                  child: Column(
                                   children: [
-                              Container(
+                              SizedBox(
                                 width: 20,
                                 height: MediaQuery.of(context).size.height - 200,
                                 child: ListView(
                                 shrinkWrap: true,
                                 primary: false,
-                                // physics: NeverScrollableScrollPhysics(),
                                 children: [
                                   for (var letter in EmployeeController()
                                       .alphabetContactMap
@@ -252,28 +244,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                                   ],
                               ),
                                ),
-                          //     Scrollable(
-                          //   viewportBuilder: (BuildContext context,
-                          //       ViewportOffset position) {
-                          //     return Column(
-                          //       children: [
-                          //         for (var letter in EmployeeController()
-                          //             .alphabetContactMap
-                          //             .keys)
-                          //           InkWell(
-                          //             onTap: () {
-                          //               scrollTo(letter: letter);
-                          //             },
-                          //             child: Text(
-                          //               letter,
-                          //               style: const TextStyle(
-                          //                   fontSize: 18, color: Colors.grey),
-                          //             ),
-                          //           ),
-                          //       ],
-                          //     );
-                          //   },
-                          // ),
+
                         ),
                       ),
                     ],

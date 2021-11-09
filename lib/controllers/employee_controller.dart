@@ -22,11 +22,10 @@ class EmployeeController {
       _totalNumberOfEmployees = result.length;
       _sortedEmployeeList = result;
 
-       //
+
 
       mapAlphabetLetterToFirstEmployeeFirstName(employees: employeeList(result.getRange(0, _totalNumberOfEmployees).toList()));
 
-      // return employeeData;
     } catch (error) {
       _sortedEmployeeList = [];
     }
