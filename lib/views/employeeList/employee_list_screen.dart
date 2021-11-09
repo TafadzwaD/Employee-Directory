@@ -18,33 +18,31 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   bool _isLoadingMoreData = false;
   bool _allEmployeesDataFetched = false;
 
-  void fetchMoreData(){
+  void fetchMoreData() {
     setState(() {
       _isLoadingMoreData = true;
     });
-    if(_employeeData.length < EmployeeController().totalNumberOfEmployees)//
+    if (_employeeData.length < EmployeeController().totalNumberOfEmployees) //
     {
-      List<Employee> _newEmployeeData =  EmployeeController().employeesPaginatedList(start: _employeeData.length,end: _employeeData.length + 50);
-        setState(() {
-          _employeeData = [..._employeeData, ..._newEmployeeData];
-          _isLoadingMoreData = false;
-        });
-
-
-    }else{
+      List<Employee> _newEmployeeData = EmployeeController()
+          .employeesPaginatedList(
+              start: _employeeData.length, end: _employeeData.length + 50);
+      setState(() {
+        _employeeData = [..._employeeData, ..._newEmployeeData];
+        _isLoadingMoreData = false;
+      });
+    } else {
       setState(() {
         _isLoadingMoreData = false;
         _allEmployeesDataFetched = true;
       });
     }
-
   }
 
   @override
   void initState() {
     // TODO: implement initState
-    EmployeeController().fetchData().then((result){
-
+    EmployeeController().fetchData().then((result) {
       fetchMoreData();
       setState(() {
         _isLoading = false;
@@ -52,7 +50,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     });
 
     _scrollController.addListener(() {
-      if(_scrollController.position.pixels >= _scrollController.position.maxScrollExtent){
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent) {
         fetchMoreData();
       }
     });
@@ -64,6 +63,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     _scrollController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,67 +97,92 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
             ),
             preferredSize: const Size.fromHeight(2.0)),
       ),
-      body:!_isLoading ? Column(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(18.0),
-            child: TextField(
-              autofocus: false,
-              decoration: InputDecoration(
-                  hintText: 'Search Employee',
-                  hintStyle: TextStyle(fontSize: 13, color: Colors.black54),
-                  isDense: true,
-                  // use less vertical space..
-                  suffixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  )),
-            ),
-          ),
-          Expanded(
-            child: Stack(
-              children:[
-                ListView.separated(
-                  controller: _scrollController,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    if(index< _employeeData.length){
-                      return EmployeeListViewWidget(employeeData: _employeeData[index],);
-                    }else{
-                      return const Center(child: Text('All Data Has Been Fetched',style: TextStyle(color: Colors.black45,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),),);
-                    }
-                  },
-                  separatorBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.fromLTRB(80, 2, 30,10),
-                      child: DashedLine(),
-                    );
-                  },
-                  itemCount: _employeeData.length + (_allEmployeesDataFetched ? 1 : 0),
+      body: !_isLoading
+          ? Column(
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.all(18.0),
+                  child: TextField(
+                    autofocus: false,
+                    decoration: InputDecoration(
+                        hintText: 'Search Employee',
+                        hintStyle:
+                            TextStyle(fontSize: 13, color: Colors.black54),
+                        isDense: true,
+                        // use less vertical space..
+                        suffixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                        )),
+                  ),
                 ),
-               _isLoadingMoreData ? const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: CircularProgressIndicator(),
-                ): Container(),
-                Positioned(
-                  right: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          for(var letters in EmployeeController().alphabetContactMap.keys)
-                            Text(letters)
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child: ListView.separated(
+                          controller: _scrollController,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            if (index < _employeeData.length) {
+                              return EmployeeListViewWidget(
+                                employeeData: _employeeData[index],
+                              );
+                            } else {
+                              return const Center(
+                                child: Text(
+                                  'All Data Has Been Fetched',
+                                  style: TextStyle(
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              );
+                            }
+                          },
+                          separatorBuilder: (context, index) {
+                            return const Padding(
+                              padding: EdgeInsets.fromLTRB(80, 2, 30, 10),
+                              child: DashedLine(),
+                            );
+                          },
+                          itemCount: _employeeData.length +
+                              (_allEmployeesDataFetched ? 1 : 0),
+                        ),
+                      ),
+                      _isLoadingMoreData
+                          ? const Align(
+                              alignment: Alignment.bottomCenter,
+                              child: CircularProgressIndicator(),
+                            )
+                          : Container(),
+                      Positioned(
+                          right: 0,
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  for (var letter in EmployeeController()
+                                      .alphabetContactMap
+                                      .keys)
+                                    InkWell(
+                                      onTap:(){
+                                        print('Go to ${EmployeeController().alphabetContactMap[letter]}');
 
-                        ],
-                      )
-                    )),
-              ] ,
-            ),
-          )
-        ],
-      ): const Center(child: CircularProgressIndicator()),
+                                      },
+                                      child: Text(letter,style: const TextStyle(fontSize: 18,color: Colors.grey),),
+                                    ),
+                                ],
+                              ))),
+                    ],
+                  ),
+                )
+              ],
+            )
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }

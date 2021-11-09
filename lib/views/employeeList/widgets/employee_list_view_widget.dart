@@ -19,6 +19,7 @@ class EmployeeListViewWidget extends StatelessWidget {
         );
       },
       child: Row(
+
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(
