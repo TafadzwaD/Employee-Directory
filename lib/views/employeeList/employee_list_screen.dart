@@ -40,6 +40,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     }
   }
 
+  //Responsible for scrolling to first element of Alphabetical order grouping
+  void scrollTo(){
+
+  }
+
   @override
   void initState() {
     // TODO: implement initState
