@@ -1,4 +1,5 @@
 import 'package:employee/views/employeeList/employee_list_screen.dart';
+import 'package:employee/views/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const EmployeeListScreen(),
+      home: const SplashScreen(),
     );
   }
 }
