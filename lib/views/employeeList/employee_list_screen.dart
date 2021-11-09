@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:employee/controllers/employee_controller.dart';
 import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
@@ -30,10 +32,16 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       List<Employee> _newEmployeeData = EmployeeController()
           .employeesPaginatedList(
               start: _employeeData.length, end: _employeeData.length + 50);
-      setState(() {
-        _employeeData = [..._employeeData, ..._newEmployeeData];
-        _isLoadingMoreData = false;
-      });
+      Timer(
+          const Duration(seconds: 2),
+              () {
+                setState(() {
+                  _employeeData = [..._employeeData, ..._newEmployeeData];
+                  _isLoadingMoreData = false;
+                });
+          }
+      );
+
     } else {
       setState(() {
         _isLoadingMoreData = false;
