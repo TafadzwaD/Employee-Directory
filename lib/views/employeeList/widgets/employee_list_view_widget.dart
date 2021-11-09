@@ -46,13 +46,16 @@ class EmployeeListViewWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 4 ,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start, //Positions children near the start of the cross axis (horizontal)
-            children: <Widget>[
-              Text(employeeData.firstName + ' ' + employeeData.lastName,style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black45,fontSize: 15, ),),
-              const SizedBox(height: 5,),
-              const Text('Job Role',style: TextStyle(color: Colors.black45,fontSize: 12),),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left:5.0,top:9),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, //Positions children near the start of the cross axis (horizontal)
+              children: <Widget>[
+                Text(employeeData.firstName + ' ' + employeeData.lastName,style: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black45,fontSize: 15, ),),
+                const SizedBox(height: 5,),
+                const Text('Job Role',style: TextStyle(color: Colors.black45,fontSize: 12),),
+              ],
+            ),
           )
         ],
       ),

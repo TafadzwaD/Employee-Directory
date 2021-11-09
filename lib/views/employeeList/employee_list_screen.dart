@@ -4,6 +4,7 @@ import 'package:employee/views/employeeList/widgets/dashed_line_widget.dart';
 import 'package:employee/views/employeeList/widgets/employee_list_view_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class EmployeeListScreen extends StatefulWidget {
   const EmployeeListScreen({Key? key}) : super(key: key);
@@ -41,8 +42,18 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   }
 
   //Responsible for scrolling to first element of Alphabetical order grouping
-  void scrollTo(){
+  void scrollTo({required String letter}) {
+    int indexOfLetterSelected =
+        EmployeeController().alphabetContactMap[letter] as int;
 
+    // If indexofLetterSelected is less than length of employeeData then the alphabet grouping has been fetched..
+    if (indexOfLetterSelected < _employeeData.length) {
+      _scrollController.animateTo(
+        indexOfLetterSelected * 93,
+        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 100),
+      );
+    }
   }
 
   @override
@@ -56,6 +67,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
     });
 
     _scrollController.addListener(() {
+      print(
+          'This is the scroll position in pixels ${_scrollController.position.pixels}');
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent) {
         fetchMoreData();
@@ -105,6 +118,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       ),
       body: !_isLoading
           ? Column(
+
               children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.all(18.0),
@@ -139,19 +153,28 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                                 children: [
                                   // check if employee is the first in their grouping in alphabetical order based on firstName. Display first character of firstname if that is the case or empty container
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 15.0,top: 20),
+                                    padding: const EdgeInsets.only(
+                                        left: 15.0, top: 20),
                                     child: EmployeeController()
                                             .alphabetContactMap
                                             .values
                                             .contains(index)
-                                        ? Text(_employeeData[index]
-                                            .firstName
-                                            .characters
-                                            .first,style: const TextStyle(color: Colors.black54,fontWeight: FontWeight.w500),)
+                                        ? Text(
+                                            _employeeData[index]
+                                                .firstName
+                                                .characters
+                                                .first,
+                                            style: const TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w500),
+                                          )
                                         : Container(),
                                   ),
-                                  EmployeeListViewWidget(
-                                    employeeData: _employeeData[index],
+                                  Container(
+                                    height: 60,
+                                    child: EmployeeListViewWidget(
+                                      employeeData: _employeeData[index],
+                                    ),
                                   ),
                                 ],
                               );
@@ -184,18 +207,28 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                             )
                           : Container(),
                       Positioned(
-                          right: 0,
-                          child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
+                        right: 0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child:
+                               SingleChildScrollView(
+
+                                 child: Column(
+                                  children: [
+                              Container(
+                                width: 20,
+                                height: MediaQuery.of(context).size.height - 200,
+                                child: ListView(
+                                shrinkWrap: true,
+                                primary: false,
+                                // physics: NeverScrollableScrollPhysics(),
                                 children: [
                                   for (var letter in EmployeeController()
                                       .alphabetContactMap
                                       .keys)
                                     InkWell(
                                       onTap: () {
-                                        print(
-                                            'Go to ${EmployeeController().alphabetContactMap[letter]}');
+                                        scrollTo(letter: letter);
                                       },
                                       child: Text(
                                         letter,
@@ -203,8 +236,37 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                                             fontSize: 18, color: Colors.grey),
                                       ),
                                     ),
+
                                 ],
-                              ))),
+
+                              ),)
+                                  ],
+                              ),
+                               ),
+                          //     Scrollable(
+                          //   viewportBuilder: (BuildContext context,
+                          //       ViewportOffset position) {
+                          //     return Column(
+                          //       children: [
+                          //         for (var letter in EmployeeController()
+                          //             .alphabetContactMap
+                          //             .keys)
+                          //           InkWell(
+                          //             onTap: () {
+                          //               scrollTo(letter: letter);
+                          //             },
+                          //             child: Text(
+                          //               letter,
+                          //               style: const TextStyle(
+                          //                   fontSize: 18, color: Colors.grey),
+                          //             ),
+                          //           ),
+                          //       ],
+                          //     );
+                          //   },
+                          // ),
+                        ),
+                      ),
                     ],
                   ),
                 )
