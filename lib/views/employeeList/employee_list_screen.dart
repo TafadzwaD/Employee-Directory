@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class EmployeeListScreen extends StatefulWidget {
-  const EmployeeListScreen({Key? key}) : super(key: key);
+  final List<Employee> initialEmployeeData;
+  const EmployeeListScreen({Key? key, required this.initialEmployeeData}) : super(key: key);
 
   @override
   _EmployeeListScreenState createState() => _EmployeeListScreenState();
@@ -16,7 +17,7 @@ class EmployeeListScreen extends StatefulWidget {
 class _EmployeeListScreenState extends State<EmployeeListScreen> {
   List<Employee> _employeeData = [];
   final _scrollController = ScrollController();
-  bool _isLoading = true;
+  // bool _isLoading = true;
   bool _isLoadingMoreData = false;
   bool _allEmployeesDataFetched = false;
 
@@ -59,12 +60,13 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    EmployeeController().fetchData().then((result) {
-      fetchMoreData();
-      setState(() {
-        _isLoading = false;
-      });
-    });
+    _employeeData = widget.initialEmployeeData;
+    // EmployeeController().fetchData().then((result) {
+    //   fetchMoreData();
+    //   setState(() {
+    //     _isLoading = false;
+    //   });
+    // });
 
     _scrollController.addListener(() {
       print(
@@ -116,8 +118,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
             ),
             preferredSize: const Size.fromHeight(2.0)),
       ),
-      body: !_isLoading
-          ? Column(
+      body:  Column(
 
               children: <Widget>[
                 const Padding(
@@ -272,7 +273,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                 )
               ],
             )
-          : const Center(child: CircularProgressIndicator()),
+
     );
   }
 }

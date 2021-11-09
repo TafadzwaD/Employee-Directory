@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:employee/controllers/employee_controller.dart';
+import 'package:employee/models/employee_model.dart';
 import 'package:employee/views/employeeList/employee_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +18,20 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      const Duration(seconds: 3),
-      () => Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) => const EmployeeListScreen()),
-      ),
+      const Duration(seconds: 10),
+      () {
+        EmployeeController().fetchData().then((result) {
+          List<Employee> _employeeData = EmployeeController()
+              .employeesPaginatedList(
+              start: 0, end:  50);
+        return  Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+                builder: (BuildContext context) =>  EmployeeListScreen(initialEmployeeData: _employeeData,),),
+          );
+
+
+        });
+      }
     );
   }
 
