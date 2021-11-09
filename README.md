@@ -10,6 +10,10 @@ A Flutter clone of [Employee Directory, Dribble design](https://dribbble.com/sho
 - [X] When user taps on an employee, the details screen of that employee must be displayed
 - [X] User can press back button to navigate back to list screen
 
+## Video Of Solution
+![Giph](https://github.com/TafadzwaD/Employee-Directory-Solution-Images/blob/main/XRecorder_10112021_005033.gif)
+
+
 ## Pictures Of Solution ( Potrait Mode)
 
 ![First Potrait Mode Image](https://github.com/TafadzwaD/Employee-Directory-Solution-Images/blob/c85671ceeb01cc75cb16f376ea4fd1c305dcc8f6/first.jpg)
