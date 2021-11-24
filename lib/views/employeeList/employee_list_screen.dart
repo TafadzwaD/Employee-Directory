@@ -32,9 +32,11 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       List<Employee> _newEmployeeData = EmployeeController()
           .employeesPaginatedList(
               start: _employeeData.length, end: _employeeData.length + 50);
+
       Timer(
           const Duration(seconds: 2),
               () {
+
                 setState(() {
                   _employeeData = [..._employeeData, ..._newEmployeeData];
                   _isLoadingMoreData = false;
@@ -47,8 +49,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         _isLoadingMoreData = false;
         _allEmployeesDataFetched = true;
       });
-    }
-  }
+    }  }
 
   //Responsible for scrolling to first element of Alphabetical order grouping
   void scrollTo({required String letter}) {
@@ -72,7 +73,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
 
     _scrollController.addListener(() {
 
-      if (_scrollController.position.pixels >=
+      if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
         fetchMoreData();
       }
