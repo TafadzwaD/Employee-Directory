@@ -24,9 +24,6 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   bool _allEmployeesDataFetched = false;
 
   void fetchMoreData() {
-    setState(() {
-      _isLoadingMoreData = true;
-    });
     if (_employeeData.length < EmployeeController().totalNumberOfEmployees) //
     {
       List<Employee> _newEmployeeData = EmployeeController()
@@ -49,7 +46,8 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         _isLoadingMoreData = false;
         _allEmployeesDataFetched = true;
       });
-    }  }
+    }
+  }
 
   //Responsible for scrolling to first element of Alphabetical order grouping
   void scrollTo({required String letter}) {
@@ -75,6 +73,9 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
 
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
+        setState(() {
+          _isLoadingMoreData = true;
+        });
         fetchMoreData();
       }
     });
